@@ -1,10 +1,10 @@
-import {  CustomForm,  CustomInput,  Button,  Label} from "../styles/StyledComponents";
+import {  CustomForm, CustomInput, Button, Label, Error,} from "../styles/StyledComponents";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const VALID_COLOR_REGEX = /^[A-Fa-f0-9]*$/;
 
-const Form = ({showUserData, handleUserValues}) => {
+const Form = ({ showUserData, handleUserValues }) => {
   const getInitialValues = () => ({
     name: "",
     color: "",
@@ -33,22 +33,22 @@ const Form = ({showUserData, handleUserValues}) => {
     //control values
     console.log(values);
     showUserData();
-    handleUserValues(values);    
-    handleReset();    
+    handleUserValues(values);
+    handleReset();
   };
 
-  const { values, setFieldValue, errors, handleSubmit, handleReset } = useFormik({
-    initialValues: getInitialValues(),
-    validationSchema: getValidationSchema(),
-    validateOnChange: false,
-    validateOnBlur: false,
-    onSubmit,
-   
-  });
+  const { values, setFieldValue, errors, handleSubmit, handleReset } =
+    useFormik({
+      initialValues: getInitialValues(),
+      validationSchema: getValidationSchema(),
+      validateOnChange: false,
+      validateOnBlur: false,
+      onSubmit,
+    });
 
   return (
-    <CustomForm id="user-form" onSubmit = {handleSubmit}>
-      <h1>Elegí tu color</h1>
+    <CustomForm id="user-form" onSubmit={handleSubmit}>
+      <h1>¿Cuál es tu color?</h1>
       <Label>Nombre</Label>
       <CustomInput
         name="name"
@@ -57,25 +57,22 @@ const Form = ({showUserData, handleUserValues}) => {
         onChange={(e) => setFieldValue(e.target.name, e.target.value)}
         value={values["name"]}
       />
-      {errors["name"] && (
-        <p style={{ color: "red", fontSize: "12px", padding: 0, margin: 0 }}>
-          {errors["name"]}
-        </p>
-      )}
+      {errors["name"] && <Error>{errors["name"]}</Error>}
+
       <Label>Color</Label>
       <CustomInput
         name="color"
         type="text"
-        placeholder="Ingresa color favorito (formato HEX)"
+        placeholder="Ingresa color en formato HEX (Ej. AC1224)"
         onChange={(e) => setFieldValue(e.target.name, e.target.value)}
         value={values["color"]}
       />
-      {errors["color"] && (
-        <p style={{ color: "red", fontSize: "12px", padding: 0, margin: 0 }}>
-          {errors["color"]}
-        </p>
-      )}
-      <Button from="user-form" type="submit">Enviar</Button>
+
+      {errors["color"] && <Error>{errors["color"]}</Error>}
+
+      <Button from="user-form" type="submit">
+        Enviar
+      </Button>
     </CustomForm>
   );
 };

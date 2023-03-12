@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Container>
+      <Container>       
         <Form
           showUserData={() => setActiveCard(true)}
           handleUserValues={(values) => setUserData(values)}
