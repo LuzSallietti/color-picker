@@ -1,7 +1,10 @@
-const Card = () => {
-    return (
-        <h2>Carta de color</h2>
-    )
-}
+const Card = ({ name, color }) => {
+  return (
+    <>
+  <h2>Hola {name}</h2>
+  <p>Tu color es {color}</p>
+    </>
+  );
+};
 
 export default Card;
