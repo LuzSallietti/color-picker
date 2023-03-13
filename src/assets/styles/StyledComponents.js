@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import img from '../img/girl.png'
 
 export const Container = styled.div`
@@ -73,7 +74,7 @@ export const ColorContainer = styled.div.attrs(
         padding:props.padding || "",
         borderRadius: props.borderRadius || "",
         display: props.display ||"block",
-        textAlign: props.textAlign || "left" 
+        textAlign: props.textAlign || "left",                
       })
 )`
 width: ${props => props.width};

@@ -10,7 +10,7 @@ const Card = ({ name, color }) => {
         padding={"16px"}
         borderRadius={"25px"}
         display={"block"}
-        textAlign={"center"}
+        textAlign={"center"}                
       >
         <h2>¡Hola {name}! &#128515;</h2>
         <p>
