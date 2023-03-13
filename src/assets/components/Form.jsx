@@ -16,9 +16,8 @@ const Form = ({ showUserData, handleUserValues }) => {
         name: Yup.string()
           .required("Este campo es obligatorio.")
           .min(3, "El nombre debe tener al menos 3 caracteres.")
-          .trim(
-            "El nombre no debe contener espacios en blanco al principio ni al final."
-          ),
+          .trim("El nombre no debe contener espacios en blanco al principio ni al final.")
+          .strict(true),
         color: Yup.string()
           .required("Este campo es obligatorio.")
           .length(6, "El código de color debe tener 6 caracteres.")
